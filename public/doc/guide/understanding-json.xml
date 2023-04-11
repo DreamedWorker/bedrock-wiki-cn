@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<page>
+    <meta-data>
+        <doc-title>学习 JSON</doc-title>
+        <type style="mode=default">指导</type>
+    </meta-data>
+    <context>
+        <view>
+            <box color="green">
+                <subtitle>小提示</subtitle>
+                <part>这是一篇附属文档，你可以从本分区的最开始「简明导入」读起。</part>
+            </box>
+            <para>
+                <part>JSON是一种简单的"语言"，用于计算机科学中的许多事情，其中就包括制作基岩版附加包。如果你以前从未听闻过 JSON ，我们非常建议你阅读下面提供的教程，它将教会你关于编写有效的 JSON 文件所需要知道的一切。</part>
+            </para>
+            <hyperlink address="https://www.digitalocean.com/community/tutorials/an-introduction-to-json">JSON 编写参考文档</hyperlink>
+        </view>
+    </context>
+</page>

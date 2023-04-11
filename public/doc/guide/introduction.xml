@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<page>
+    <meta-data>
+        <doc-title>简明导入</doc-title>
+        <type style="mode=default">指导</type>
+    </meta-data>
+    <context>
+        <view>
+            <title>附加包（Addon）是什么？</title>
+            <para>
+                <part>Minecraft 基岩版（Windows 10, iOS, Android, Consoles）附加包与 Java 版中的模组（mods）等效。但相较于 Java 版，基岩版的 API 是官方提供的，并且是由 Mojang 而不是社区维护的。</part>
+                <part>通常，你可以将模组理解为修改游戏内容的程序；而附加包则是遵循了微软的开发文档的丰富游戏内容的程序。</part>
+            </para>
+        </view>
+        <view>
+            <title>关于此指南</title>
+            <para>
+                <part>此教程是一个面向初学者的指南，它旨在陪伴你走出附加包制作的第一步。在读完此分区的所有文档后，你将会创建一个你自己的全功能附加包，它包括：「鬼」实体、「外质」物品以及其他的相关联的文件。</part>
+                <part>在教程结束后，你将完全自己创建一个完整的插件，你可以操作和修改它！</part>
+            </para>
+            <para>
+                <part>在本教程中，你将会在页面中看到如下两个方框：</part>
+            </para>
+            <box color="green">
+                <subtitle>小提示</subtitle>
+                <part>这里会给出一些非常有用的信息。</part>
+            </box>
+            <box color="red">
+                <subtitle>警告</subtitle>
+                <part>注意！这里将提出一些需要关注的常见错误。</part>
+            </box>
+            <para>
+                <part>在阅读文档时需要留意上述的两种方框，它们包含非常重要的信息，可能有助于你解决问题。</part>
+            </para>
+        </view>
+        <view>
+            <title>这些教程是最新的吗？</title>
+            <para>
+                <part>此中文翻译版会尽可能做到每个季度检查翻新一次「注」。很多部分的内容将无法在旧版本中生效，部分内容可能会在即将到来的版本中发生修改。任何教程从编写出来就已经落后了，我们会尽可能使此教程保持最新，所以不需要过于担心。</part>
+                <hint>注：此处原文是：「本指南根据最新发布的 Minecraft 基岩稳定版编写」。</hint>
+            </para>
+        </view>
+        <view>
+            <title>在读完此教程后你可以做什么？</title>
+            <para>
+                <part>在指南部分的末尾，你将写完你的第一个附加包！要进一步扩展你的知识与认知，你可以这么做：</part>
+            </para>
+            <list>
+                <row type="normal" href="no">创建新项目来实践你的所学；</row>
+                <row type="normal" href="no">要深入了解添加到MCBE的其他方面，你可以使用屏幕左侧列出的不同章节的子指南。这包括但不限于自定义方块、生物群落、高级物品、动画控制器，甚至JS脚本。有些章节为每个相关主题提供了更深入的技术教程和文档。</row>
+            </list>
+        </view>
+        <view>
+            <title>附录</title>
+            <para>
+                <part>除了分布指南外，我们还提供了其他几个你可能感兴趣的内容：</part>
+            </para>
+            <list>
+                <row type="link" href="public/doc/guide/understanding-json.xml">学习 JSON</row>
+                <row type="link" href="public/doc/guide/">下载实例包</row>
+                <row type="link" href="public/doc/guide/">疑难解答</row>
+            </list>
+        </view>
+    </context>
+</page>

@@ -1,9 +1,10 @@
 import 'dart:ui';
 
+import 'package:bedrock_wiki_cn/tutorials/basic_stage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
+//--web-renderer=canvaskit --dart-define=FLUTTER_WEB_CANVASKIT_URL=./canvaskit/ --release
 void main() {
   runApp(const MyApp());
 }
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
           return GetMaterialApp(
             title: 'Bedrock Wiki 简体中文版',
             debugShowCheckedModeBanner: false,
+            getPages: [GetPage(name: "/docStage", page: () => BasicStage())],
             theme: ThemeData(
                 primarySwatch: Colors.green, applyElevationOverlayColor: true),
             home: Scaffold(
@@ -54,15 +56,18 @@ class MyApp extends StatelessWidget {
                               "初学者指南",
                               "逐步式教程，面向第一次接触附加包的用户。",
                               "public/assets/images/homepage/crafting_table_0.png",
-                            170.sp
-                          ),
+                              171.sp, () {
+                            Get.toNamed("/docStage", arguments: {
+                              "order": "public/doc/guide/introduction.xml"
+                            });
+                          }),
                           SizedBox(width: 16.sp),
                           functionCard(
                               "讨论",
                               "加入讨论群组以了解学习附加包制作，或向其他创作者寻求帮助。",
                               "public/assets/images/homepage/discord.png",
-                            170.sp
-                          )
+                              171.sp,
+                              () {})
                         ],
                       ),
                       SizedBox(height: 16.sp),
@@ -73,15 +78,15 @@ class MyApp extends StatelessWidget {
                               "实体",
                               "初学者指南：学习并掌握行为包中实体文件的结构。\n\n排除问题：学习如何解决在修改实体时出现的一些常见问题，如实体纹理不显示。",
                               "public/assets/images/homepage/spawn_egg_30.png",
-                            225.sp
-                          ),
+                              236.sp,
+                              () {}),
                           SizedBox(width: 16.sp),
                           functionCard(
                               "物品",
                               "初学者指南：帮助你向游戏添加一个最基础的物品。\n\n1.16+版本物品的变动：了解并学习新的实验性玩法物品的编写。",
                               "public/assets/images/homepage/iron_pickaxe_0.png",
-                            225.sp
-                          )
+                              236.sp,
+                              () {})
                         ],
                       ),
                       SizedBox(height: 16.sp),
@@ -92,15 +97,15 @@ class MyApp extends StatelessWidget {
                               "方块",
                               "初学者指南：帮助你向游戏添加一个最基础的方块。\n\n1.16+版本物品的变动：了解并学习新的实验性玩法方块的编写。",
                               "public/assets/images/homepage/diamond_ore_0.png",
-                              225.sp
-                          ),
+                              236.sp,
+                              () {}),
                           SizedBox(width: 16.sp),
                           functionCard(
-                              "脚本（Scripting）",
+                              "脚本",
                               "初学者指南：学习 scripting-api 基本功能的使用。\n\n自定义指令：教你如何向游戏内添加自定义的指令。",
                               "public/assets/images/homepage/scripting.png",
-                              225.sp
-                          )
+                              236.sp,
+                              () {})
                         ],
                       ),
                       SizedBox(height: 16.sp),
@@ -111,15 +116,15 @@ class MyApp extends StatelessWidget {
                               "世界结构生成",
                               "初学者指南：帮助你了解如何创建新的生物群落、地形结构及矿物等随世界生成的内容。",
                               "public/assets/images/homepage/buildplate.png",
-                              170.sp
-                          ),
+                              171.sp,
+                              () {}),
                           SizedBox(width: 16.sp),
                           functionCard(
                               "做出贡献",
                               "此wiki基于社区维护的英文版翻译而来，如果你有改进意见或问题，欢迎与我们取得联系。",
                               "public/assets/images/homepage/writable_book_0.png",
-                              170.sp
-                          )
+                              171.sp,
+                              () {})
                         ],
                       ),
                       SizedBox(height: 64.sp),
@@ -142,23 +147,25 @@ class MyApp extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset("public/favicon.ico", width: 64.sp, height: 64.sp),
+              Image.asset("public/assets/images/homepage/wikilogo.png", width: 64.sp, height: 64.sp),
               SizedBox(width: 16.sp),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     "Bedrock Wiki 中文版",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30.sp,
-                    decoration: TextDecoration.underline,
-                      decorationStyle: TextDecorationStyle.solid,
-                      decorationThickness: 2.25.sp,
-                      decorationColor: const Color.fromRGBO(215, 215, 215, 1)
-                    ),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30.sp,
+                        decoration: TextDecoration.underline,
+                        decorationStyle: TextDecorationStyle.solid,
+                        decorationThickness: 2.25.sp,
+                        decorationColor:
+                            const Color.fromRGBO(215, 215, 215, 1)),
                   ),
                   SizedBox(height: 12.sp),
                   Text(
-                      "这是一个Minecraft基岩版技术分享网站，它涵盖了文档、教程和一些一般的入门信息。",
+                    "这是一个Minecraft基岩版技术分享网站，它涵盖了文档、教程和一些一般的入门信息。",
                     style: TextStyle(fontSize: 16.sp),
                   )
                 ],
@@ -170,12 +177,10 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  Widget disclaimerPane(){
+  Widget disclaimerPane() {
     return Container(
       width: MediaQueryData.fromWindow(window).size.width,
-      decoration: const BoxDecoration(
-        color: Color.fromRGBO(228, 228, 228, 1)
-      ),
+      decoration: const BoxDecoration(color: Color.fromRGBO(228, 228, 228, 1)),
       padding: EdgeInsets.all(12.sp),
       child: Column(
         children: [
@@ -185,8 +190,11 @@ class MyApp extends StatelessWidget {
               Text("Bedrock Wiki 英文版由：", style: TextStyle(fontSize: 12.sp)),
               SizedBox(width: 4.sp),
               GestureDetector(
-                onTap: (){},
-                child: Text("Bedrock—OSS", style: TextStyle(fontSize: 12.sp, color: const Color.fromRGBO(28, 78, 216, 1))),
+                onTap: () {},
+                child: Text("Bedrock—OSS",
+                    style: TextStyle(
+                        fontSize: 12.sp,
+                        color: const Color.fromRGBO(28, 78, 216, 1))),
               ),
               SizedBox(width: 4.sp),
               Text("编写并发布", style: TextStyle(fontSize: 12.sp))
@@ -199,50 +207,61 @@ class MyApp extends StatelessWidget {
               Text("中文版由：", style: TextStyle(fontSize: 12.sp)),
               SizedBox(width: 4.sp),
               GestureDetector(
-                onTap: (){},
-                child: Text("BlueDream", style: TextStyle(fontSize: 12.sp, color: const Color.fromRGBO(28, 78, 216, 1))),
+                onTap: () {},
+                child: Text("BlueDream",
+                    style: TextStyle(
+                        fontSize: 12.sp,
+                        color: const Color.fromRGBO(28, 78, 216, 1))),
               ),
               SizedBox(width: 4.sp),
               Text("翻译、开源、发布", style: TextStyle(fontSize: 12.sp))
             ],
           ),
           SizedBox(height: 8.sp),
-          Text("\"Minecraft\"是 Mojang AB 的商标，本Wiki的英文版、此简体中文翻译版与微软或 Mojang AB 没有任何关联。",
-            textAlign: TextAlign.center, style: TextStyle(fontSize: 12.sp))
+          Text(
+              "\"Minecraft\"是 Mojang AB 的商标，本Wiki的英文版、此简体中文翻译版与微软或 Mojang AB 没有任何关联。",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 12.sp))
         ],
       ),
     );
   }
 
-  Widget functionCard(String title, String message, String imgPath, double mHeight){
-    return Container(
-      width: 374.sp,
-      height: mHeight,//170.sp,266
-      padding: EdgeInsets.all(24.sp),
-      decoration: BoxDecoration(
-        color: const Color.fromRGBO(255, 255, 255, 1),
-        border: Border.all(width: 2.sp, color: const Color.fromRGBO(228, 231, 235, 1)),
-        borderRadius: BorderRadius.circular(8.sp)
-      ),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Image.asset(imgPath, width: 56.sp, height: 56.sp),
-              SizedBox(width: 16.sp),
-              Text(title, style: TextStyle(
-                fontSize: 30.sp,
-                color: const Color.fromRGBO(28, 78, 216, 1),
-                decoration: TextDecoration.underline,
-                decorationColor: const Color.fromRGBO(215, 215, 215, 1),
-                decorationStyle: TextDecorationStyle.solid,
-                decorationThickness: 2.25.sp,
-              ))
-            ],
-          ),
-          SizedBox(height: 16.sp),
-          Text(message, style: TextStyle(fontSize: 16.sp))
-        ],
+  Widget functionCard(String title, String message, String imgPath,
+      double mHeight, Function()? clicked) {
+    return GestureDetector(
+      onTap: clicked,
+      child: Container(
+        width: 374.sp,
+        height: mHeight,
+        //170.sp,266
+        padding: EdgeInsets.all(24.sp),
+        decoration: BoxDecoration(
+            color: const Color.fromRGBO(255, 255, 255, 1),
+            border: Border.all(
+                width: 2.sp, color: const Color.fromRGBO(228, 231, 235, 1)),
+            borderRadius: BorderRadius.circular(8.sp)),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Image.asset(imgPath, width: 56.sp, height: 56.sp),
+                SizedBox(width: 16.sp),
+                Text(title,
+                    style: TextStyle(
+                      fontSize: 30.sp,
+                      color: const Color.fromRGBO(28, 78, 216, 1),
+                      decoration: TextDecoration.underline,
+                      decorationColor: const Color.fromRGBO(215, 215, 215, 1),
+                      decorationStyle: TextDecorationStyle.solid,
+                      decorationThickness: 2.25.sp,
+                    ))
+              ],
+            ),
+            SizedBox(height: 16.sp),
+            Text(message, style: TextStyle(fontSize: 16.sp))
+          ],
+        ),
       ),
     );
   }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<content>
+    <menu title="初学者指南">
+        <bar title="指南" />
+        <item order="public/doc/guide/introduction.xml">简明导入</item>
+        <item order="">附加包说明</item>
+        <item order="">准备开发环境</item>
+        <item order="">新建一个空项目</item>
+        <item order="">创建一个自定义物品</item>
+        <item order="">创建一个自定义实体</item>
+        <item order="">BlockBench 的简单介绍</item>
+        <item order="">添加掉落表、实体生成规制和合成表</item>
+        <bar title="更多" />
+        <item order="public/doc/guide/understanding-json.xml">学习 JSON</item>
+        <item order="">下载模板包</item>
+        <item order="">疑难解答</item>
+        <item order="">进一步了解 Manifest</item>
+        <item order="">格式版本</item>
+    </menu>
+    <menu title="进阶指南">
+        <bar title="指南" />
+        <item order="">简明导入</item>
+        <item order="">附加包说明</item>
+        <item order="">准备开发环境</item>
+        <item order="">新建一个空项目</item>
+        <item order="">创建一个自定义物品</item>
+        <item order="">创建一个自定义实体</item>
+        <item order="">BlockBench 的简单介绍</item>
+        <item order="">添加掉落表、实体生成规制和合成表</item>
+        <bar title="更多" />
+        <item order="">学习 JSON</item>
+        <item order="">下载模板包</item>
+        <item order="">疑难解答</item>
+        <item order="">进一步了解 Manifest</item>
+        <item order="">格式版本</item>
+    </menu>
+</content>
