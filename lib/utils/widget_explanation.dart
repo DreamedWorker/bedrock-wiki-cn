@@ -1,5 +1,7 @@
 import 'package:bedrock_wiki_cn/controller/basic_stage_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:xml/xml.dart';
@@ -43,9 +45,23 @@ class WidgetExplain {
       case "bar":
         {
           if (element.getAttribute("title")! == "指南") {
-            return Container();
+            return Container(
+              padding: EdgeInsets.all(4.sp),
+              decoration: BoxDecoration(
+                color: Colors.greenAccent,
+                borderRadius: BorderRadius.circular(4.sp)
+              ),
+              child: Text("指南", style: TextStyle(fontSize: 14.sp, color: Colors.white)),
+            );
           } else if (element.getAttribute("title")! == "更多") {
-            return Center();
+            return Container(
+              padding: EdgeInsets.all(4.sp),
+              decoration: BoxDecoration(
+                  color: Colors.yellowAccent,
+                  borderRadius: BorderRadius.circular(4.sp)
+              ),
+              child: Text("更多", style: TextStyle(fontSize: 14.sp, color: Colors.white)),
+            );
           } else {
             return const Text("解析此字段时出现异常");
           }
@@ -90,9 +106,17 @@ class WidgetExplain {
           var name = element.text;
           return ListTile(
             title: Text(name, style: TextStyle(fontSize: 14.sp)),
-            onTap: (){
+            onTap: () {
               controller.loadFile(element.getAttribute("order")!);
             },
+          );
+        }
+      case "delimiter":
+        {
+          return Container(
+            width: double.infinity,
+            height: 1.5.sp,
+            decoration: const BoxDecoration(color: Colors.black54),
           );
         }
       case "list":
@@ -125,8 +149,25 @@ class WidgetExplain {
             onTap: () async {
               await launchUrl(Uri.parse(address));
             },
-            child: Text(element.text, style: TextStyle(fontSize: 16.sp, color: Colors.blueAccent)),
+            child: Text(element.text,
+                style: TextStyle(fontSize: 16.sp, color: Colors.blueAccent)),
           );
+        }
+      case "native":
+        {
+          return Container(
+              width: double.infinity,
+              height: 200.sp,
+              margin: EdgeInsets.all(4.sp),
+              child: FutureBuilder(
+                  future: rootBundle.loadString(element.getAttribute("path")!),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.hasData) {
+                      return Markdown(data: snapshot.data, selectable: true);
+                    } else {
+                      return const Text("markdown-解析失败");
+                    }
+                  }));
         }
       default:
         {

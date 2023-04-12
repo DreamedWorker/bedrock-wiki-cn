@@ -15,5 +15,75 @@
             </para>
             <hyperlink address="https://www.digitalocean.com/community/tutorials/an-introduction-to-json">JSON 编写参考文档</hyperlink>
         </view>
+        <view>
+            <title>有效的 JSON 文件</title>
+            <para>
+                <part>编写 JSON 时要记住的重要一点是，它必须是完全没有错误的，否则你编写的文件将无法发挥任何作用。即使是一个错误的字符，或一个额外的逗号都会导致整个文件的无效。出于这个原因，你写有效的 JSON 文件是非常重要的。</part>
+                <part>我们可以使用下面提供的在线工具「注」来验证我们的JSON是否有效。只需将你的代码粘贴到输入框中，然后验证JSON。接着你会得到一个响应，告知你的代码是否正确，以及任何错误的位置和类型。</part>
+                <hint>注：原文提供的 JSON 验证工具是「json lint」，其地址是：https://jsonlint.com/</hint>
+            </para>
+            <hyperlink address="https://www.sojson.com/">JSON 验证工具—— SOJSON</hyperlink>
+        </view>
+        <view>
+            <title>数据结构</title>
+            <para>
+                <part>在JSON中，数据可以以多种格式写入。每种格式都是专门针对它要表示的数据种类的。下面是我们可用的结构：</part>
+            </para>
+            <native path="public/parts/understand_json/data_structure_table.md" />
+            <para>
+                <part>除了这些简单的结构外，我们还可以使用两种特殊的结构。特殊结构是用来将结构嵌套在一起的。「注」</part>
+                <hint>注：原文所说的特殊结构实际上就是指 object 和 array 这两者，下面将简单介绍。</hint>
+            </para>
+            <title>Arrays 数组</title>
+            <para>
+                <part>数组由两个方括号`[]`和若干相同数据类型的数据组成，你可以把它理解为 Kotlin 中的 ArrayList。我们可以把其他数据结构放在列表里面。列表中的每个元素应该用西文逗号隔开。</part>
+                <part>下面是两个简单的例子：</part>
+            </para>
+            <native path="public/parts/understand_json/arrays.md" />
+            <title>Objects 对象</title>
+            <para>
+                <part>对象由两个大括号`{}`和若干数据结构组成，你可以理解为 Map。对象是一种特殊的语法，它包含名称数据结构。名称称为“键”，结构称为“值”。</part>
+                <part>此键值语法如下所示：`"key"：{任何结构}`。注意键周围的引号和冒号。</part>
+                <part>下面是一个简单的对象示例：</part>
+            </para>
+            <native path="public/parts/understand_json/objects.md" />
+            <para>
+                <part>我们需要用逗号分隔每个键值对。</part>
+                <part>我们将对象的键值对称为其子对象或内部对象。</part>
+            </para>
+        </view>
+        <view>
+            <title>基岩版 JSON 结构</title>
+            <para>
+                <part>在 Minecraft 中，JSON 文件总是以_object_开头，您可以记住它是两个大括号：“｛｝”。我们称之为顶层对象。我们以键值对的形式编写这个对象的内部代码。</part>
+                <part>以下是一个简单的 JSON 文件示例，用于 Minecraft 插件：</part>
+            </para>
+            <native path="public/parts/understand_json/simple_example.md" />
+            <para>
+                <part>仔细看一下格式，你将看到整个结构是在我们已经学习的数据结构的基础上编写的。如果你想练习 JSON 技能，请尝试回答以下问题：</part>
+            </para>
+            <list>
+                <row type="normal" href="no">在顶层对象中一共有多少个键？尝试说出它们的名字。</row>
+                <row type="normal" href="no">format_version 的值是什么？</row>
+                <row type="normal" href="no">`"loop": true`这个键值对的数据结构是什么？</row>
+            </list>
+        </view>
+        <view>
+            <title>常见疑难解答示例</title>
+            <delimiter />
+            <para>
+                <part>你写下了此内容: `"format_version": 1.12`</part>
+                <part>但是报错如下：format_version 的值错误，它应该是一个字符串。</part>
+                <part>解决方法也非常简单，你只需要使用英文双引号包裹这个 1.12 即可。</part>
+            </para>
+            <delimiter />
+            <para>
+                <part>你写下了此内容: `[1 2 5 6]`</part>
+                <part>但是报错内容如下：你的数组缺乏逗号。</part>
+                <part>解决方法也非常简单，你只需要在「1」、「2」、「5」的后面加上英文逗号即可。</part>
+            </para>
+            <hint>这里的报错内容为便于理解而翻译了，原文及实际报错内容是英文的。</hint>
+            <delimiter />
+        </view>
     </context>
 </page>

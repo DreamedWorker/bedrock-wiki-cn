@@ -31,3 +31,4 @@ flutter:
     - public/assets/images/homepage/
     - public/doc/guide/
     - public/doc/content.xml
+    - public/parts/understand_json/
