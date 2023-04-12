@@ -1,4 +1,5 @@
 import 'package:bedrock_wiki_cn/controller/basic_stage_controller.dart';
+import 'package:bedrock_wiki_cn/utils/markdown_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -163,7 +164,8 @@ class WidgetExplain {
                   future: rootBundle.loadString(element.getAttribute("path")!),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
                     if (snapshot.hasData) {
-                      return Markdown(data: snapshot.data, selectable: true);
+                      //return Markdown(data: snapshot.data, selectable: true);
+                      return MarkdownViewer(snapshot.data);
                     } else {
                       return const Text("markdown-解析失败");
                     }

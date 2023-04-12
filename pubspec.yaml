@@ -16,6 +16,7 @@ dependencies:
   flutter_screenutil: ^5.7.0
   xml: ^6.2.2
   url_launcher: ^6.1.10
+  markdown_widget: ^2.1.0
 
 dev_dependencies:
   flutter_test:
